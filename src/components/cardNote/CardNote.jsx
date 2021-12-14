@@ -17,6 +17,7 @@ export default class CardNote extends Component {
             <header>
                 <span>{this.props.title}</span>
                 <DeleteSVG onClick={() => this.props.deleteNote(this.props.index)} />
+                <span class="card-note-category">{this.props.category}</span>
             </header>
             <p>{this.props.text}</p>
         </section>

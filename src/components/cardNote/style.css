@@ -9,20 +9,20 @@
 
 .card-note-section header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     max-width: 100%;
+    width: 100%;
+    margin-bottom: 8px;
 }
 
-.card-note-section span {
+.card-note-section span:nth-child(1) {
     display: inline-block;
-    margin-bottom: 8px;
     font-weight: 500;
 
     overflow: hidden;
     word-wrap: break-word;
     max-width: 100%;
 
-    margin-right: 4px;
 }
 
 .card-note-section p {
@@ -33,4 +33,9 @@
     max-width: 100%;
 
     font-size: .8rem;
+}
+
+.card-note-category {
+    font-weight: normal;
+
 }

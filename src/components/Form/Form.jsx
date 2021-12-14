@@ -8,6 +8,7 @@ export default class Form extends Component {
 
         this.title = '';
         this.text = '';
+        this.category = 'No category';
     }
 
     _handleTitleChange(event) {
@@ -26,7 +27,22 @@ export default class Form extends Component {
         event.preventDefault();
         event.stopPropagation();
 
-        this.props.createNote(this.title, this.text);
+        this.props.createNote(this.title, this.text, this.category);
+    }
+
+    _renderCategories() {
+        const categories = this.props.categories;
+
+        return categories.map((item, index) => {
+            return (
+                <option >{item}</option>
+            )
+        });
+    }
+
+    _handleCategoryChange(event) {
+        event.stopPropagation();
+        this.category = event.target.value;
     }
 
     render() {
@@ -35,6 +51,13 @@ export default class Form extends Component {
             class="form-new-note"
             onSubmit={this._createNote.bind(this)}
         >
+            <select 
+            className="form-categories-list"
+            onChange={this._handleCategoryChange.bind(this)}
+            >
+                <option>No Category</option>
+                {this._renderCategories()}
+            </select>
             <input 
             type="text" 
             placeholder="Titulo"

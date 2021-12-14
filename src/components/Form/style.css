@@ -32,3 +32,9 @@
     outline: none;
     background: whitesmoke;
 }
+
+.form-categories-list {
+    align-self: flex-start;
+    outline: none;
+    width: 100%;
+}

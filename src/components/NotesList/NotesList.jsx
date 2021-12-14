@@ -9,23 +9,22 @@ export default class NotesList extends Component {
     }
 
     renderNote() {
-        if (this.props.notes.length) {
-            const notes = this.props.notes;
-
-            return notes.map((note, index) => {
-                return (
-                    <li className="notes-item" key={index}>
-                        <CardNote 
-                        title={note.title} 
-                        text={note.text} 
-                        deleteNote = {this.props.deleteNote}
-                        index={index}></CardNote>
-                    </li>
-                )
-            })
-        }
-
-        return '';
+        const notes = this.props.notes;
+        
+        return notes.map((note, index) => {
+            return (
+                <li className="notes-item" key={index}>
+                    <CardNote 
+                    title={note.title} 
+                    text={note.text} 
+                    deleteNote = {this.props.deleteNote}
+                    index={index}
+                    category={note.category}
+                    >
+                    </CardNote>
+                </li>
+            )
+        })
     }
 
     render() {
