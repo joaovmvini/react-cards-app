@@ -1,0 +1,18 @@
+.notes-parent {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: flex-start;
+}
+
+.notes-item {
+    background: whitesmoke;
+    border-radius: 14px;
+
+    font-size: 1rem;
+    margin: 15px;
+
+    width: 170px;
+}
