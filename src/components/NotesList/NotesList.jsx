@@ -15,7 +15,11 @@ export default class Form extends Component {
             return notes.map((note, index) => {
                 return (
                     <li className="notes-item" key={index}>
-                        <CardNote title={note.title} text={note.text}></CardNote>
+                        <CardNote 
+                        title={note.title} 
+                        text={note.text} 
+                        deleteNote = {this.props.deleteNote}
+                        index={index}></CardNote>
                     </li>
                 )
             })

@@ -7,10 +7,22 @@
     padding: 16px;
 }
 
+.card-note-section header {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
 .card-note-section span {
     display: inline-block;
     margin-bottom: 8px;
     font-weight: 500;
+
+    overflow: hidden;
+    word-wrap: break-word;
+    max-width: 100%;
+
+    margin-right: 4px;
 }
 
 .card-note-section p {
@@ -19,4 +31,6 @@
     word-wrap: break-word;
     overflow: hidden;
     max-width: 100%;
+
+    font-size: .8rem;
 }
