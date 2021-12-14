@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NotesLists from "./components/NotesList"
 import Form from "./components/Form"
+import CategoryList from "./components/CategoryList";
 
 class App extends Component {
 
@@ -8,7 +9,8 @@ class App extends Component {
       super();
 
       this.state = {
-        notes: []
+        notes: [],
+        categories: ['Work', 'Sports']
       };
 
     }
@@ -25,20 +27,32 @@ class App extends Component {
     }
 
     deleteNote(index) {
-      console.log(index)
       this.state.notes.splice(index, 1);
 
-      this.setState({
+      const newState = {
         notes: this.state.notes
-      });
+      }
 
+      this.setState(newState);
+    }
+
+    addCategory(category) {
+       const newCategoriesArray = [...this.state.categories, category];
+       const newState = {
+         categories: newCategoriesArray
+       }
+
+       this.setState(newState);
     }
 
     render() {
       return (
-        <section class="main-section">
+        <section className="main-section">
           <Form createNote = {this.createNote.bind(this)} />
-          <NotesLists notes = {this.state.notes} deleteNote = {this.deleteNote.bind(this)} />
+          <main className="main-separator">
+            <CategoryList categories = {this.state.categories} addCategory = {this.addCategory.bind(this)}/>
+            <NotesLists notes = {this.state.notes} deleteNote = {this.deleteNote.bind(this)} />
+          </main>
         </section>
       );
     }

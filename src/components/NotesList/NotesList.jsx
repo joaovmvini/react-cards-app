@@ -3,7 +3,7 @@ import CardNote from '../cardNote'
 
 import './style.css';
 
-export default class Form extends Component {
+export default class NotesList extends Component {
     constructor(props) {
         super(props);
     }

@@ -19,3 +19,7 @@ code {
   display: flex;
   align-items: flex-start;
 }
+
+.main-separator {
+  flex-grow: 3;
+}
