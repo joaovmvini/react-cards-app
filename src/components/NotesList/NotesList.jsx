@@ -6,10 +6,22 @@ import './style.css';
 export default class NotesList extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            notes: []
+        }
+    }
+
+    componentDidMount() {
+        this.props.notes.observe(this._newNote.bind(this));
+    }
+
+    _newNote(notes) {
+        this.setState({ ...this.state, notes });
     }
 
     renderNote() {
-        const notes = this.props.notes;
+        const notes = this.state.notes;
         
         return notes.map((note, index) => {
             return (

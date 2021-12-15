@@ -3,13 +3,20 @@ import React, { Component } from 'react';
 import './style.css';
 
 class CategoryList extends Component {
+    
+    constructor() {
+        super();
 
+        this.state = {
+            categories: []
+        }
+    }
     componentDidMount() {
         this.props.categories.observe(this._newCategories.bind(this));
     }
 
     _newCategories(categories) {
-        console.log(categories);
+        this.setState({...this.state, categories })
     }
 
     _handleEventInput(event) {
@@ -25,7 +32,7 @@ class CategoryList extends Component {
         return (
             <section className="category-list">
                 <ul className="category-list_list">
-                    {this.props.categories.categories.map((item, index) => {
+                    {this.state.categories.map((item, index) => {
                         return (
                             <li key={index} className="category-list_item">{item}</li>
                         )

@@ -18,10 +18,10 @@ class App extends Component {
     render() {
       return (
         <section className="main-section">
-          <Form notes = {this.notes} createNote = {this.notes.createNote.bind(this.notes)} categories = {this.categories.categories}/>
+          <Form notes = {this.notes} createNote = {this.notes.createNote.bind(this.notes)} categories = {this.categories}/>
           <main className="main-separator">
             <CategoryList categories = {this.categories} addCategory = {this.categories.addCategory.bind(this.categories)}/>
-            <NotesLists notes = {this.notes.notes} deleteNote = {this.notes.deleteNote.bind(this.notes)} />
+            <NotesLists notes = {this.notes} deleteNote = {this.notes.deleteNote.bind(this.notes)} />
           </main>
         </section>
       );

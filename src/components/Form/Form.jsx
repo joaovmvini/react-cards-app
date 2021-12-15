@@ -9,14 +9,18 @@ export default class Form extends Component {
         this.title = '';
         this.text = '';
         this.category = 'No category';
+
+        this.state = {
+            categories: []
+        }
     }
 
     componentDidMount() {
-        this.props.notes.observe(this._newNote);
+        this.props.categories.observe(this._newCategory.bind(this));
     }
 
-    _newNote(notes) {
-        console.log(notes);
+    _newCategory(categories) {
+        this.setState({ ...this.state, categories });
     }
 
     _handleTitleChange(event) {
@@ -36,15 +40,14 @@ export default class Form extends Component {
         event.stopPropagation();
 
         this.props.notes.createNote(this.title, this.text, this.category);
-        this.props.notes.notificate();
     }
 
     _renderCategories() {
-        const categories = this.props.categories;
+        const categories = this.state.categories;
 
         return categories.map((item, index) => {
             return (
-                <option >{item}</option>
+                <option key={index}>{item}</option>
             )
         });
     }

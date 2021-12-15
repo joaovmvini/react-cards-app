@@ -16,10 +16,12 @@ export default class NotesArray {
         const note = new Note(title, text, category);
         
         this.notes.push(note);
+        this.notificate();
     }
 
     deleteNote(index) {
         this.notes.splice(index, 1);
+        this.notificate();
     }
 }
 
