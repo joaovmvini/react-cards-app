@@ -11,6 +11,14 @@ export default class Form extends Component {
         this.category = 'No category';
     }
 
+    componentDidMount() {
+        this.props.notes.observe(this._newNote);
+    }
+
+    _newNote(notes) {
+        console.log(notes);
+    }
+
     _handleTitleChange(event) {
         event.stopPropagation();
 
@@ -27,7 +35,8 @@ export default class Form extends Component {
         event.preventDefault();
         event.stopPropagation();
 
-        this.props.createNote(this.title, this.text, this.category);
+        this.props.notes.createNote(this.title, this.text, this.category);
+        this.props.notes.notificate();
     }
 
     _renderCategories() {

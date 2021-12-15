@@ -2,56 +2,26 @@ import React, { Component } from "react";
 import NotesLists from "./components/NotesList"
 import Form from "./components/Form"
 import CategoryList from "./components/CategoryList";
+import Categories from "./data/Categories";
+import NotesArray from "./data/Notes";
 
 class App extends Component {
 
     constructor() {
       super();
 
-      this.state = {
-        notes: [],
-        categories: []
-      };
-
+      this.categories = new Categories();
+      this.notes = new NotesArray();
     }
 
-    createNote(title, text, category) {
-      const newNote = { title, text, category };
-      const newNotesArray = [...this.state.notes, newNote];
-
-      const newState = {
-        notes: newNotesArray
-      }
-
-      this.setState(newState);
-    }
-
-    deleteNote(index) {
-      this.state.notes.splice(index, 1);
-
-      const newState = {
-        notes: this.state.notes
-      }
-
-      this.setState(newState);
-    }
-
-    addCategory(category) {
-       const newCategoriesArray = [...this.state.categories, category];
-       const newState = {
-         categories: newCategoriesArray
-       }
-
-       this.setState(newState);
-    }
 
     render() {
       return (
         <section className="main-section">
-          <Form createNote = {this.createNote.bind(this)} categories = {this.state.categories}/>
+          <Form notes = {this.notes} createNote = {this.notes.createNote.bind(this.notes)} categories = {this.categories.categories}/>
           <main className="main-separator">
-            <CategoryList categories = {this.state.categories} addCategory = {this.addCategory.bind(this)}/>
-            <NotesLists notes = {this.state.notes} deleteNote = {this.deleteNote.bind(this)} />
+            <CategoryList categories = {this.categories} addCategory = {this.categories.addCategory.bind(this.categories)}/>
+            <NotesLists notes = {this.notes.notes} deleteNote = {this.notes.deleteNote.bind(this.notes)} />
           </main>
         </section>
       );
