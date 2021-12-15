@@ -10,9 +10,16 @@ class CategoryList extends Component {
         this.state = {
             categories: []
         }
+
+        this._newCategorie = this._newCategories.bind(this);
     }
+
     componentDidMount() {
-        this.props.categories.observe(this._newCategories.bind(this));
+        this.props.categories.observe(this._newCategorie);
+    }
+
+    componentWillUnmount() {
+        this.props.categories.unobserve(this._newCategorie);
     }
 
     _newCategories(categories) {

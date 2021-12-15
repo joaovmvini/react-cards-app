@@ -8,6 +8,10 @@ export default class NotesArray {
         this._observers.push(fn);
     }
 
+    unobserve(fn) {
+        this._observers = this._observers.filter(f => f !== fn);
+    }
+
     notificate() {
         this._observers.forEach(fn => fn(this.notes));
     }

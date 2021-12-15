@@ -13,10 +13,16 @@ export default class Form extends Component {
         this.state = {
             categories: []
         }
+
+        this._newCategories = this._newCategory.bind(this);
     }
 
     componentDidMount() {
-        this.props.categories.observe(this._newCategory.bind(this));
+        this.props.categories.observe(this._newCategories);
+    }
+
+    componentWillUnmount() {
+        this.props.categories.unobserve(this._newCategories);
     }
 
     _newCategory(categories) {
